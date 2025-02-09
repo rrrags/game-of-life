@@ -1,0 +1,3 @@
+/home/oliver/kode/gol/build/CMakeFiles/test.dir
+/home/oliver/kode/gol/build/CMakeFiles/edit_cache.dir
+/home/oliver/kode/gol/build/CMakeFiles/rebuild_cache.dir
