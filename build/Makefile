@@ -129,30 +129,6 @@ test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
 .PHONY : test/fast
 
-src/GOL.o: src/GOL.cpp.o
-.PHONY : src/GOL.o
-
-# target to build an object file
-src/GOL.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GOL.cpp.o
-.PHONY : src/GOL.cpp.o
-
-src/GOL.i: src/GOL.cpp.i
-.PHONY : src/GOL.i
-
-# target to preprocess a source file
-src/GOL.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GOL.cpp.i
-.PHONY : src/GOL.cpp.i
-
-src/GOL.s: src/GOL.cpp.s
-.PHONY : src/GOL.s
-
-# target to generate assembly for a file
-src/GOL.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/GOL.cpp.s
-.PHONY : src/GOL.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -186,9 +162,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... src/GOL.o"
-	@echo "... src/GOL.i"
-	@echo "... src/GOL.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

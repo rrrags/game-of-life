@@ -3,10 +3,5 @@
   "directory": "/home/oliver/kode/gol/build",
   "command": "/usr/bin/g++-12  -I/home/oliver/kode/gol/include -g -Wall -Wextra -std=gnu++20 -o CMakeFiles/test.dir/src/main.cpp.o -c /home/oliver/kode/gol/src/main.cpp",
   "file": "/home/oliver/kode/gol/src/main.cpp"
-},
-{
-  "directory": "/home/oliver/kode/gol/build",
-  "command": "/usr/bin/g++-12  -I/home/oliver/kode/gol/include -g -Wall -Wextra -std=gnu++20 -o CMakeFiles/test.dir/src/GOL.cpp.o -c /home/oliver/kode/gol/src/GOL.cpp",
-  "file": "/home/oliver/kode/gol/src/GOL.cpp"
 }
 ]

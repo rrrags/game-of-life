@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/oliver/kode/gol/src/GOL.cpp" "CMakeFiles/test.dir/src/GOL.cpp.o" "gcc" "CMakeFiles/test.dir/src/GOL.cpp.o.d"
   "/home/oliver/kode/gol/src/main.cpp" "CMakeFiles/test.dir/src/main.cpp.o" "gcc" "CMakeFiles/test.dir/src/main.cpp.o.d"
   )
 

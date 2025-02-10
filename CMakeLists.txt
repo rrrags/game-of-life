@@ -8,8 +8,7 @@ project(test)
 
 # Add source files
 set(CPP_SOURCES
-src/main.cpp
-src/GOL.cpp)
+src/main.cpp)
 
 set(HPP_SOURCES include/GOL.hpp)
 

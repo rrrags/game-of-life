@@ -1,1 +1,1 @@
-/usr/bin/g++-12 -g CMakeFiles/test.dir/src/main.cpp.o CMakeFiles/test.dir/src/GOL.cpp.o -o test 
+/usr/bin/g++-12 -g CMakeFiles/test.dir/src/main.cpp.o -o test 

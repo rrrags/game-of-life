@@ -1,5 +1,8 @@
+#include <GOL.hpp>
+#include <array>
+#include <cstddef>
 #include <iostream>
-#include <memory>
+#include <vector>
 
 /*Convoy's game og life
 ------------------------
@@ -12,7 +15,10 @@ There are four rules for each cell in this game
 
 int main()
 {
-    //
+    constexpr std::size_t N{10};
+    std::vector<Point> alivePoints{Point(1, 2), Point(3, 4), Point(5, 6)};
+    GOL<N> gameOfLife(alivePoints);
+    gameOfLife.printGrid();
 
     return 0;
 }

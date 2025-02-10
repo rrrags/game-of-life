@@ -5,6 +5,7 @@ UseTab: Never
 BraceWrapping:
   AfterFunction: true
   AfterClass: true
+  AfterStruct: true
   AfterControlStatement: true
   AfterEnum: true
   AfterNamespace: true
