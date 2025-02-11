@@ -13,7 +13,7 @@ BraceWrapping:
   BeforeElse: true
 BreakBeforeBraces: Custom
 AllowShortFunctionsOnASingleLine: Inline
-ColumnLimit: 100
+ColumnLimit: 120
 AccessModifierOffset: -2
 AlignConsecutiveAssignments: true
 AlignTrailingComments: true
