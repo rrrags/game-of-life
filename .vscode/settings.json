@@ -14,7 +14,7 @@
         "/usr/include",
         "/usr/local/include"
     ],
-    "[cpp]": {
+    "[cpp]": {      
         "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
     }
 }

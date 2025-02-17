@@ -20,6 +20,5 @@ int main()
     GOL<N> gameOfLife(alivePoints);
     // gameOfLife.printGrid();
     gameOfLife.start();
-
     return 0;
 }

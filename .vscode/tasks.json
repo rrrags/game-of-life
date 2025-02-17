@@ -4,7 +4,7 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++-12 build active file",
-            "command": "/usr/bin/g++-11",  // Path to your g++-12 compiler
+            "command": "/usr/bin/g++-12",  // Path to your g++-12 compiler
             "args": [
                 "-std=c++20",                  // Use C++20 standard
                 "-fdiagnostics-color=always",  // Enable colored diagnostics
