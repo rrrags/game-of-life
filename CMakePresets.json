@@ -11,26 +11,23 @@
             "description": "General settings that apply to all configurations",
             "hidden": true,
             "binaryDir": "${sourceDir}/out/build/${presetName}",
-            "installDir": "${sourceDir}/out/install/${presetName}"
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
         },
         {
             "name": "debug",
-            "configurePreset": "debug",
             "displayName": "Debug",
             "description": "Build with vcpkg in Debug",
             "inherits" : "conf-common",
-            "configuration": "Debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         },
         {
             "name": "release",
-            "configurePreset": "release",
             "displayName": "Release",
             "description": "Build with vcpkg in Release",
             "inherits" : "conf-common",
-            "configuration": "Release",
 	    "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }

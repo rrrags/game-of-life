@@ -1,6 +1,6 @@
 set(CMAKE_CXX_COMPILER "g++-12")
 
-# Specify include directories
+enable_testing()
 
 # Add source files
 set(CPP_TEST_SOURCES
@@ -8,11 +8,12 @@ test.cpp)
 
 set(HPP_TEST_SOURCES ${CMAKE_SOURCE_DIR}/include/GOL.hpp)
 
-#find_package(spdlog REQUIRED)
-#find_package(Eigen3 REQUIRED)
+find_package(GTest CONFIG REQUIRED)
 
 # Define the executable
 add_executable(test ${CPP_TEST_SOURCES} ${HPP_TEST_SOURCES})
+target_link_libraries(test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+add_test(NAME test COMMAND test)
 #target_link_libraries(test PRIVATE spdlog::spdlog)
 #target_link_libraries(test PRIVATE Eigen3::Eigen)
 

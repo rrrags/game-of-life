@@ -1,4 +1,6 @@
 // sjekk kits and variants for cmake tools
+#include <gtest/gtest.h>
+
 #include <iostream>
 
 #include "GOL.hpp"
