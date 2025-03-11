@@ -43,7 +43,8 @@ class GOL
     void start()
     {
         printStateOfGrid();
-        while (aliveCells > 0)
+        int f{5};
+        while (f > 0)
         {
             m_gridTemp = m_grid;
             for (std::size_t i = 0; i < N; ++i)
@@ -57,6 +58,7 @@ class GOL
             m_grid = m_gridTemp;
             updateNumberOfAliveCells();
             printStateOfGrid();
+            f -= 1;
         }
     }
 
@@ -82,14 +84,14 @@ class GOL
     {
         // periodic boundary
         std::size_t aliveNeighbours{0};
-        if (m_grid.at((i + 1) % 10).at(j) == ALIVE) aliveNeighbours += 1;             // right neighbour
-        if (m_grid.at((i - 1) % 10).at(j) == ALIVE) aliveNeighbours += 1;             // left neighbour
-        if (m_grid.at(i).at((j + 1) % 10) == ALIVE) aliveNeighbours += 1;             // upper neighbour
-        if (m_grid.at(i).at((j - 1) % 10) == ALIVE) aliveNeighbours += 1;             // lower neighbour
-        if (m_grid.at((i - 1) % 10).at((j + 1) % 10) == ALIVE) aliveNeighbours += 1;  // upper left neighbour
-        if (m_grid.at((i + 1) % 10).at((j + 1) % 10) == ALIVE) aliveNeighbours += 1;  // upper right neighbour
-        if (m_grid.at((i - 1) % 10).at((j - 1) % 10) == ALIVE) aliveNeighbours += 1;  // lower left neighbour
-        if (m_grid.at((i + 1) % 10).at((j - 1) % 10) == ALIVE) aliveNeighbours += 1;  // lower right neighbour
+        if (m_grid.at((i + 1) % N).at(j) == ALIVE) aliveNeighbours += 1;            // right neighbour
+        if (m_grid.at((i - 1) % N).at(j) == ALIVE) aliveNeighbours += 1;            // left neighbour
+        if (m_grid.at(i).at((j + 1) % N) == ALIVE) aliveNeighbours += 1;            // upper neighbour
+        if (m_grid.at(i).at((j - 1) % N) == ALIVE) aliveNeighbours += 1;            // lower neighbour
+        if (m_grid.at((i - 1) % N).at((j + 1) % N) == ALIVE) aliveNeighbours += 1;  // upper left neighbour
+        if (m_grid.at((i + 1) % N).at((j + 1) % N) == ALIVE) aliveNeighbours += 1;  // upper right neighbour
+        if (m_grid.at((i - 1) % N).at((j - 1) % N) == ALIVE) aliveNeighbours += 1;  // lower left neighbour
+        if (m_grid.at((i + 1) % N).at((j - 1) % N) == ALIVE) aliveNeighbours += 1;  // lower right neighbour
         return aliveNeighbours;
     }
 
@@ -97,7 +99,7 @@ class GOL
     {
         if (m_grid.at(i).at(j) == ALIVE)
         {
-            if (aliveNeighbours < 2 || aliveNeighbours > 4) m_gridTemp.at(i).at(j) = DEAD;  // rule 1,2 and 3
+            if (aliveNeighbours < 2 || aliveNeighbours > 3) m_gridTemp.at(i).at(j) = DEAD;  // rule 1,2 and 3
         }
         else
         {
