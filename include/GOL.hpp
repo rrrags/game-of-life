@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
+#include <functional>
 #include <iostream>
 #include <vector>
 
@@ -24,41 +25,39 @@ enum State
 struct Point
 {
     constexpr Point(std::size_t x, std::size_t y) : x(x), y(y) {}
-    const std::size_t x;
-    const std::size_t y;
+    std::size_t x;
+    std::size_t y;
 };
 
 template <std::size_t N>
 class GOL
 {
   public:
-    GOL(const std::vector<Point>& pointsToAliveCells) : aliveCells(pointsToAliveCells.size())
+    GOL(const std::vector<Point>& pointsToAliveCells)
     {
         for (const auto& p : pointsToAliveCells)
         {
             m_grid[p.x][p.y] = ALIVE;
         }
+        m_gridTemp = m_grid;
     }
 
     void start()
     {
         printStateOfGrid();
-        int f{5};
-        while (f > 0)
+        while (getNumberOfAliveCells() > 0)
         {
             m_gridTemp = m_grid;
             for (std::size_t i = 0; i < N; ++i)
             {
                 for (std::size_t j = 0; j < N; ++j)
                 {
-                    std::size_t aliveNeighbours = findNumberOfAliveNeighbours(i, j);
+                    std::size_t aliveNeighbours = getNumberOfAliveNeighbours(i, j);
                     applyRulesToTempGrid(aliveNeighbours, i, j);
                 }
             }
             m_grid = m_gridTemp;
-            updateNumberOfAliveCells();
             printStateOfGrid();
-            f -= 1;
         }
     }
 
@@ -80,18 +79,21 @@ class GOL
         }
     }
 
-    [[nodiscard]] inline std::size_t findNumberOfAliveNeighbours(std::size_t i, std::size_t j) const
+    [[nodiscard]] inline std::size_t getNumberOfAliveNeighbours(std::size_t i, std::size_t j) const
     {
+        // modulus operator
+        auto modN = [](int dividend) { return (dividend % static_cast<int>(N) + N) % N; };
+
         // periodic boundary
         std::size_t aliveNeighbours{0};
-        if (m_grid.at((i + 1) % N).at(j) == ALIVE) aliveNeighbours += 1;            // right neighbour
-        if (m_grid.at((i - 1) % N).at(j) == ALIVE) aliveNeighbours += 1;            // left neighbour
-        if (m_grid.at(i).at((j + 1) % N) == ALIVE) aliveNeighbours += 1;            // upper neighbour
-        if (m_grid.at(i).at((j - 1) % N) == ALIVE) aliveNeighbours += 1;            // lower neighbour
-        if (m_grid.at((i - 1) % N).at((j + 1) % N) == ALIVE) aliveNeighbours += 1;  // upper left neighbour
-        if (m_grid.at((i + 1) % N).at((j + 1) % N) == ALIVE) aliveNeighbours += 1;  // upper right neighbour
-        if (m_grid.at((i - 1) % N).at((j - 1) % N) == ALIVE) aliveNeighbours += 1;  // lower left neighbour
-        if (m_grid.at((i + 1) % N).at((j - 1) % N) == ALIVE) aliveNeighbours += 1;  // lower right neighbour
+        if (m_grid.at(modN(i + 1)).at(j) == ALIVE) aliveNeighbours += 1;            // lower neighbour
+        if (m_grid.at(modN(i - 1)).at(j) == ALIVE) aliveNeighbours += 1;            // upper neighbour
+        if (m_grid.at(i).at(modN(j + 1)) == ALIVE) aliveNeighbours += 1;            // right neighbour
+        if (m_grid.at(i).at(modN(j - 1)) == ALIVE) aliveNeighbours += 1;            // left neighbour
+        if (m_grid.at(modN(i - 1)).at(modN(j + 1)) == ALIVE) aliveNeighbours += 1;  // upper right neighbour
+        if (m_grid.at(modN(i + 1)).at(modN(j + 1)) == ALIVE) aliveNeighbours += 1;  // lower right neighbour
+        if (m_grid.at(modN(i - 1)).at(modN(j - 1)) == ALIVE) aliveNeighbours += 1;  // upper left neighbour
+        if (m_grid.at(modN(i + 1)).at(modN(j - 1)) == ALIVE) aliveNeighbours += 1;  // lower left neighbour
         return aliveNeighbours;
     }
 
@@ -107,14 +109,14 @@ class GOL
         }
     }
 
-    inline void updateNumberOfAliveCells()
+    [[nodiscard]] inline std::size_t getNumberOfAliveCells() const
     {
-        std::size_t tempCount{0};
+        std::size_t count{0};
         for (const auto& row : m_grid)
         {
-            tempCount += std::count(row.begin(), row.end(), ALIVE);
+            count += std::count(row.begin(), row.end(), ALIVE);
         }
-        aliveCells = tempCount;
+        return count;
     }
 
     inline void printStateOfGrid()
@@ -143,8 +145,9 @@ class GOL
         std::cout << "\n";
     }
 
+    std::array<std::array<State, N>, N> getTempGrid() { return m_gridTemp; }
+
   private:
     std::array<std::array<State, N>, N> m_grid{};
     std::array<std::array<State, N>, N> m_gridTemp{};
-    std::size_t aliveCells;
 };

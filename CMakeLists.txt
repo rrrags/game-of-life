@@ -20,6 +20,7 @@ add_executable(gol ${CPP_SOURCES} ${HPP_SOURCES})
 #target_link_libraries(gol PRIVATE spdlog::spdlog)
 #target_link_libraries(gol PRIVATE Eigen3::Eigen)
 
+enable_testing()
 add_subdirectory(test)
 
 
