@@ -58,5 +58,5 @@ TEST(test, testGetNumberOfAliveCells)
     std::vector<Point> alivePoints{Point(5, 5), Point(5, 6), Point(5, 4), Point(6, 5), Point(7, 5)};
     GOL<N> gameOfLife(alivePoints);
     std::size_t count = gameOfLife.getNumberOfAliveCells();
-    EXPECT_EQ(count, 5);
+    EXPECT_EQ(count, 5) << "counted wrong";
 }
