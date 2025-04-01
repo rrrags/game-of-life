@@ -24,7 +24,7 @@ TEST(test, testgetNumberOfAliveNeighbours)
     EXPECT_EQ(gameOfLife2.getNumberOfAliveNeighbours(9, 9), 2)
         << "counted wrong number of neighbours for lower right corner\n";
     EXPECT_EQ(gameOfLife2.getNumberOfAliveNeighbours(0, 0), 2) << "counted wrong number of neighbours for upper left\n";
-    EXPECT_EQ(gameOfLife3.getNumberOfAliveNeighbours(5, 5), 8) << "counted wrong number of neighbours\n";
+    EXPECT_EQ(gameOfLife3.getNumberOfAliveNeighbours(5, 5), 8) << "counted wrong number of neighbours for middle\n";
 }
 
 TEST(test, testApplyRulesToTempGrid)
@@ -59,4 +59,10 @@ TEST(test, testGetNumberOfAliveCells)
     GOL<N> gameOfLife(alivePoints);
     std::size_t count = gameOfLife.getNumberOfAliveCells();
     EXPECT_EQ(count, 5) << "counted wrong";
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+
+    return RUN_ALL_TESTS(); 
 }

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(CMAKE_CXX_COMPILER "g++-12")
+#set(CMAKE_CXX_COMPILER "g++-12")
 
 project(gol)
 
@@ -25,7 +25,11 @@ add_subdirectory(test)
 
 
 target_compile_features(gol PUBLIC cxx_std_20)
-target_compile_options(gol PRIVATE -Wall -Wextra)
+if(MSVC)
+    target_compile_options(gol PRIVATE /W4)
+else()
+    target_compile_options(gol PRIVATE -Wall -Wextra)
+endif()
 target_include_directories(gol PRIVATE ${PROJECT_SOURCE_DIR}/include)
 
 
