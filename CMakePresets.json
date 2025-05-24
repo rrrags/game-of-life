@@ -9,7 +9,7 @@
         {
             "name": "conf-MSVC",
             "description": "MSVC configuration",
-			"generator": "Visual Studio 17 2022",
+	    "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "installDir": "${sourceDir}/install/${presetName}",
             "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
@@ -21,6 +21,7 @@
 		{
             "name": "conf-common",
             "description": "common configuration to be inherited",
+    	    "generator": "Ninja",
             "hidden": true,
             "binaryDir": "${sourceDir}/build/${presetName}",
             "installDir": "${sourceDir}/install/${presetName}",

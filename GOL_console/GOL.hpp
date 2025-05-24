@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
-#include <functional>
 #include <iostream>
 #include <vector>
 
@@ -79,7 +78,7 @@ class GOL
         }
     }
 
-    [[nodiscard]] inline std::size_t getNumberOfAliveNeighbours(std::size_t i, std::size_t j) const
+    std::size_t getNumberOfAliveNeighbours(std::size_t i, std::size_t j) const
     {
         // modulus operator
         auto modN = [](int dividend) { return (dividend % static_cast<int>(N) + N) % N; };
@@ -97,7 +96,7 @@ class GOL
         return aliveNeighbours;
     }
 
-    inline void applyRulesToTempGrid(std::size_t aliveNeighbours, std::size_t i, std::size_t j)
+    void applyRulesToTempGrid(std::size_t aliveNeighbours, std::size_t i, std::size_t j)
     {
         if (m_grid.at(i).at(j) == ALIVE)
         {
@@ -109,7 +108,7 @@ class GOL
         }
     }
 
-    [[nodiscard]] inline std::size_t getNumberOfAliveCells() const
+    std::size_t getNumberOfAliveCells() const
     {
         std::size_t count{0};
         for (const auto& row : m_grid)
@@ -119,7 +118,7 @@ class GOL
         return count;
     }
 
-    inline void printStateOfGrid()
+    void printStateOfGrid()
     {
         for (std::size_t i = 0; i < N; ++i)
         {
