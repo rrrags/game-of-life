@@ -22,3 +22,8 @@ The software itself is located in folder GOL_console. Here you will find the imp
  - Or, run the test from the solution explorer
 ### On linux
  - `cd path/to/your/build/folder && ctest`
+ 
+ 
+ 
+ dagbok:
+ vscode måtte bygge før QT, ellers fant ikke qtcreator qt libraries? funket å oppdatere cmakepresets ""CMAKE_PREFIX_PATH": "C:\\Qt\\6.8.2\\msvc2022_64\\lib\\cmake", " med space f.eks.?

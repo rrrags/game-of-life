@@ -14,6 +14,7 @@
             "installDir": "${sourceDir}/install/${presetName}",
             "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
+				"CMAKE_PREFIX_PATH": "C:\\Qt\\6.8.2\\msvc2022_64\\lib\\cmake", 
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             }
             
@@ -27,6 +28,7 @@
             "installDir": "${sourceDir}/install/${presetName}",
             "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
+                "CMAKE_PREFIX_PATH": "C:\\Qt\\6.8.2\\msvc2022_64\\lib\\cmake",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
             }
             
